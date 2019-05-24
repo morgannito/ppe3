@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+
+    <div class="span3">
+     {% if app.user is not  null %}
+    <div class="well">
+           
+
+        <div class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="icon-shopping-cart"></i>
+                {# 1 item - 18,09 € #}
+                <b class="caret"></b></a>
+            </a>
+            <div class="dropdown-menu well" role="menu" aria-labelledby="dLabel">
+                {# <p>Item x 1 <span class="pull-right">18,09 €</span></p> #}
+
+                <a href="{{ path('panier')}}" class="btn btn-primary">Mon Panier</a>
+            </div>
+        </div>
+               
+
+    </div>
+     {% endif %}
+        {% if app.user is  null %}
+    <div class="well">
+    
+        <ul class="nav nav-list">
+            <li>
+                <a href="{{ path('fos_user_security_login') }}">Se connecter</a>
+            </li>
+            <li>
+                <a href="/register">S'inscrire</a>
+            </li>
+        </ul>
+    </div>
+          {% endif %}
+    
+    <div class="well">
+        <ul class="nav nav-list">
+            <li class="nav-header">Nos produits</li>
+              <li>
+              <a href="{{ path('produitscat') }}">Tout</a>
+            </li>
+                  {% for categorie in categories %}
+            <li>
+              <a href="{{ path('produitscat',{"idcategories":categorie.id}) }}">{{ categorie.nom }}</a>
+            </li>
+                  {% endfor %}
+        </ul>
+    </div>
+</div>
+        <div class="span9">
+
+            <ul class="thumbnails">
+
+                {% for leproduits in produits %}
+                <li class="span3">
+                    <div class="thumbnail">
+         <pre>
+          
+         </pre>
+                        <img src="{{ leproduits.path }}" alt="DevAndClick" width="300" height="300">
+                        <div class="caption">
+                            <h4>{{ leproduits.nom }}</h4>
+                        
+                            <p>{{ leproduits.prix }} €</p>
+                             <a class="btn btn-primary" href="{{ path('details',{"prodtuitsdetails":leproduits.id})}}">Plus d'infos</a> 
+                                     {% if app.user is not null %}
+
+                            <a class="btn btn-success" href="{{ path('ajouter',{"id":leproduits.id})}}">Ajouter au panier</a>
+                                    {% endif %}
+
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+               
+            </ul>
+
+            {# <div class="pagination">
+                <ul>
+                    <li class="disabled"><span>Précédent</span></li>
+                    <li class="disabled"><span>1</span></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">Suivant</a></li>
+                </ul>
+            </div> #}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

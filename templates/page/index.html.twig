@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% for pages in pages %}
+
+
+
+
+<div class="container">
+		<div class="row">
+			
+			<div class="span12">
+				<div class="row">
+                    <h4>{{pages.titre}}</h4>
+                    <h5>AB29837 Item Model</h5>
+                    <p>{{pages.contenu}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endfor %}
+
+{% endblock %}

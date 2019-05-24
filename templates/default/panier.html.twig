@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="container">
+		<div class="row">
+                <?php include '../layout/col-left.php'; ?>
+				<div class="span9">
+                
+                    <h2>Votre parnier</h2>
+                    <h3>{{ app.user}}</h3>
+                    <form>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Références</th>
+                                <th>Quantité</th>
+                                <th>Prix </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                                        {% for leproduit in produit %}
+
+                            <tr>
+                        
+                                <td>{{ leproduit.id}}</td>
+
+                                <td>
+                                    <select class="span1"><option>1</option></select>&nbsp;
+                                    <a href="#"><i class="icon-refresh"></i></a>
+                                    <a href="#"><i class="icon-trash"></i></a>
+                                </td>
+
+                                <td>{{ leproduit.prix}}</td>
+                            
+                            </tr>
+                          
+                           
+                        </tbody>
+                    </table>
+                </form>
+    
+                <dl class="dl-horizontal pull-right">
+                 
+                    
+                    <dt>TVA :</dt>
+                    <dd>200€</dd>
+        
+                    <dt>Total:</dt>
+                    <dd>{{ leproduit.prix+200}}</dd>
+                </dl>
+                   {% endfor %}
+                <div class="clearfix"></div>
+                <a href="{{ path('livraison')}}" class="btn btn-success pull-right">Valider mon panier</a>
+                <a href="/" class="btn btn-primary">Continuer mes achats</a>
+            </div>
+		
+		</div>
+	</div>
+
+    {% endblock  %}
