@@ -66,15 +66,7 @@ class Produits
      */
     private $path;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Commandes", mappedBy="produits")
-     */
-    private $commandes;
-
-    public function __construct()
-    {
-        $this->commandes = new ArrayCollection();
-    }
+    
 
 
     /**
@@ -216,34 +208,13 @@ class Produits
         return $this;
     }
 
-    /**
-     * @return Collection|Commandes[]
-     */
-    public function getCommandes(): Collection
+    
+
+    
+    public function __toString()
     {
-        return $this->commandes;
+        return "aucun pour le moment";
     }
-
-    public function addCommande(Commandes $commande): self
-    {
-        if (!$this->commandes->contains($commande)) {
-            $this->commandes[] = $commande;
-            $commande->addProduit($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommande(Commandes $commande): self
-    {
-        if ($this->commandes->contains($commande)) {
-            $this->commandes->removeElement($commande);
-            $commande->removeProduit($this);
-        }
-
-        return $this;
-    }
-
     
 
 

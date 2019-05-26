@@ -4,7 +4,7 @@ easy_admin:
             - App\Entity\Categories   
             - App\Entity\Produits
             - App\Entity\Pages
-            - App\Entity\Utilisateurs
+            - App\Entity\User
             - App\Entity\UtilisateursAdresses
             - App\Entity\Commandes
 #    entities:

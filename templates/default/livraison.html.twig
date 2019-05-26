@@ -14,7 +14,7 @@
                        {% for adress in adresse %}
                             <label class="radio">
                                 <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                                {{adress.adresse}}<a href="#"><i class="icon-trash"></i></a>
+                                {{adress.adresse}}<a href="{{adress.id}}"><i class="icon-trash"></i></a>
                             </label>
                               {% endfor %}
                             <br /><br />
@@ -25,7 +25,7 @@
 
                             <label class="radio">
                                 <input type="radio" name="optionsRadios2" id="optionsRadios1" value="option1" checked="">
-                                 {{adress.adresse}} <a href="#"><i class="icon-trash"></i></a>
+                                 {{adress.adresse}} <a href="{{adress.id}}"><i class="icon-trash"></i></a>
                             </label>
                             
                               {% endfor %}

@@ -197,4 +197,9 @@ class Commandes
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return "aucune pour le moment";
+    }
 }
